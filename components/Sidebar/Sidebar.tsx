@@ -12,7 +12,7 @@ import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet';
 
 const routes = [
     {
-        href: "",
+        href: "/",
         label: "Home",
         icon: HomeIcon
     },
@@ -30,11 +30,6 @@ const routes = [
         href: "billing",
         label: "Billing",
         icon: CoinsIcon
-    },
-    {
-        href: "profile",
-        label: "Profile",
-        icon: UserIcon
     },
     {
         href: "marketplace",

@@ -2,7 +2,7 @@ import BreadCrumbHeader from '@/components/BreadCrumbHeader'
 import { Sidebar } from '@/components/Sidebar/Sidebar'
 import { ThemeModeToggle } from '@/components/ThemeModeToggle/ThemeModeToggle'
 import { Separator } from '@/components/ui/separator'
-import { WEBSITE_NAME } from '@/constants'
+import { SignedIn, UserButton } from '@clerk/nextjs'
 import React from 'react'
 
 const layout = ({ children }: { children: React.ReactNode }) => {
@@ -14,6 +14,9 @@ const layout = ({ children }: { children: React.ReactNode }) => {
                     <BreadCrumbHeader />
                     <div className="gap-1 flex items-center">
                         <ThemeModeToggle />
+                        <SignedIn>
+                            <UserButton />
+                        </SignedIn>
                     </div>
                 </header>
                 <Separator />
