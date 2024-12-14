@@ -1,15 +1,11 @@
 "use server";
 
+import { checkIsUserAuthenticated } from "@/actions/checkUserAuthenticated";
 import prisma from "@/lib/prisma";
-import { auth } from "@clerk/nextjs/server";
 
 
 export const GetWorkflowsForUser = async () => {
-    const { userId } = await auth();
-
-    if (!userId) {
-        throw new Error("Unauthenticated user!");
-    }
+    const userId = await checkIsUserAuthenticated();
 
     return prisma.workflow.findMany({
         where: {
