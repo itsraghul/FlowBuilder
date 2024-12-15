@@ -15,6 +15,7 @@ import { useMutation } from '@tanstack/react-query';
 import { CreateWorkFlow } from '@/actions/workflows/createWorkflow';
 import { toast } from 'sonner';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { WorkflowType } from '@/types/workflow';
 
 
 const CreateWorkflowDialog = ({ triggerText }: { triggerText?: string }) => {
@@ -97,9 +98,9 @@ const CreateWorkflowDialog = ({ triggerText }: { triggerText?: string }) => {
                                                     </SelectTrigger>
                                                 </FormControl>
                                                 <SelectContent>
-                                                    <SelectItem value="FORM">Form Site</SelectItem>
-                                                    <SelectItem value="PLAIN">Plain Site</SelectItem>
-                                                    <SelectItem value="CHART">Chart Site</SelectItem>
+                                                    <SelectItem value={WorkflowType.WEBSCRAPPER}>Web Scrapper</SelectItem>
+                                                    <SelectItem value={WorkflowType.COMMON_APP_INTEGRATION}>Common App Integration</SelectItem>
+                                                    <SelectItem value={WorkflowType.WEB_AUTOMATION_TESTING}>Web Automation Testing</SelectItem>
                                                 </SelectContent>
                                             </Select>
                                         }} />

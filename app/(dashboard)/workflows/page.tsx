@@ -4,6 +4,7 @@ import AlertBox from '@/components/AlertBox/AlertBox'
 import { Skeleton } from '@/components/ui/skeleton'
 import { InboxIcon } from 'lucide-react'
 import CreateWorkflowDialog from './_components/CreateWorkflowDialog'
+import WorkflowCard from './_components/WorkflowCard'
 
 const WorkflowPage = () => {
     return (
@@ -45,7 +46,11 @@ const UserWorkflows = async () => {
         if (workflows.length == 0) {
             return <EmptyWorkflowBox />
         }
-        return <div className=""></div>
+        return <div className="grif grid-cols-1 gap-4">
+            {workflows.map((workflow, item) => (
+                <WorkflowCard key={workflow.id} workflow={workflow} />
+            ))}
+        </div>
     } catch (error) {
         return <AlertBox title='Error' description='Something went wrong. Please try again later.' />
     }
