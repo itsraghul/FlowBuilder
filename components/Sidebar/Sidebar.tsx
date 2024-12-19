@@ -50,7 +50,7 @@ export const Sidebar = () => {
                 <Logo />
             </div>
             <div className="p-2">ToDO Credits</div>
-            <div className="flex flex-col p-2">
+            <div className="flex flex-col p-2 gap-1">
                 {routes.map((route) => {
                     const href = route.href === "" ? "/" : route.href;
                     return <Link key={route.href} href={href} className={buttonVariants({
