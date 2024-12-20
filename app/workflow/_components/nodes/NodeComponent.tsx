@@ -15,7 +15,7 @@ const NodeComponent = memo((props: NodeProps) => {
 
     return (
         <NodeCard nodeId={id} isSelected={!!selected}>
-            <NodeHeader taskType={nodeData.type} />
+            <NodeHeader taskType={nodeData.type} nodeId={id} />
             <NodeInputs>
                 {
                     inputs.map((input, index) => (
