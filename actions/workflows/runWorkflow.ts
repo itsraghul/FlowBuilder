@@ -79,5 +79,5 @@ export const RunWorkFlow = async (form: {
     if (!execution) {
         throw new Error("Execution plan not created");
     }
-    console.log("Execution Plan:", execution);
+
 }
