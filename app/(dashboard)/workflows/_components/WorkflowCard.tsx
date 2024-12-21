@@ -10,13 +10,13 @@ import { cn } from '@/lib/utils'
 import { WorkflowStatus } from '@/types/workflow'
 import { Workflow } from '@prisma/client'
 import { useMutation } from '@tanstack/react-query'
-import { FileTextIcon, MoreVerticalIcon, PlayIcon, ShuffleIcon, TrashIcon } from 'lucide-react'
+import { FileCode2, MoreVerticalIcon, PlayIcon, ShuffleIcon, TrashIcon } from 'lucide-react'
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { toast } from 'sonner'
 
 const statusColors = {
-    [WorkflowStatus.DRAFT]: "bg-yellow-400 text-yellow-600",
+    [WorkflowStatus.DRAFT]: "bg-amber-300 text-yellow-600",
     [WorkflowStatus.PUBLISHED_LOCAL]: "bg-primary"
 }
 
@@ -28,10 +28,10 @@ const WorkflowCard = ({ workflow }: { workflow: Workflow }) => {
         <Card className='border border-separate shadow-sm rounded-lg overflow-hidden hover:shadow-md dark:shadow-primary/30 mb-5'>
             <CardContent className='p-4 flex items-center justify-between h-[100px]'>
                 <div className="flex items-center justify-start space-x-3">
-                    <div className={cn("w-10 h-10 rounded-full flex items-center justify-center", statusColors[isDraft ? WorkflowStatus.DRAFT : WorkflowStatus.PUBLISHED_LOCAL])}>
+                    <div className={cn("w-10 h-10 rounded-x2 flex items-center justify-center", statusColors[isDraft ? WorkflowStatus.DRAFT : WorkflowStatus.PUBLISHED_LOCAL])}>
                         {
                             isDraft ? (
-                                <FileTextIcon className='h-5 w-5' />
+                                <FileCode2 className='h-5 w-5' />
                             ) : (
                                 <PlayIcon className='h-5 w-5' />
                             )
