@@ -32,6 +32,9 @@ export type WorkflowExecutionPlanPhase = {
 
 export type WorkflowExecutionPlan = WorkflowExecutionPlanPhase[];
 
+export enum WorkflowExecutionTrigger {
+    MANUAL = "MANUAL"
+}
 
 export enum WorkflowExecutionStatus {
     PENDING = "PENDING",
