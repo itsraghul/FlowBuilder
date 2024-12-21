@@ -23,7 +23,7 @@ jobs:
       - name: Merge main branch into main-safe-backup
         run: |
           git checkout main-safe-backup
-          git merge origin/main --allow-unrelated-histories --no-edit
+          git merge origin/main --allow-unrelated-histories -X theirs --no-edit
       - name: Push changes
         run: git push origin main
         env:
