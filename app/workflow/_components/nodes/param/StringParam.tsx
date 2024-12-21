@@ -32,7 +32,7 @@ const StringParam = ({ param, value, updateNodeParamValue, disabled }: ParamProp
                 id={id} value={internalValue}
                 disabled={disabled}
                 placeholder={disabled ? "Data Passed From Node" : 'Enter the value here'}
-                className='text-xs'
+                className='text-xs bg-white'
                 onChange={(e: any) => setInternalValue(e.target.value)}
                 onBlur={(e: any) => updateNodeParamValue(e.target.value)}
             />
