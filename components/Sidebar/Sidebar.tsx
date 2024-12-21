@@ -32,11 +32,6 @@ const routes = [
         icon: CoinsIcon
     },
     {
-        href: "profile",
-        label: "Profile",
-        icon: UserIcon
-    },
-    {
         href: "marketplace",
         label: "Marketplace",
         icon: Store
@@ -45,7 +40,9 @@ const routes = [
 
 export const Sidebar = () => {
     const pathName = usePathname();
+
     const activeRoute = routes.find((route) => route.href.length > 0 && pathName.includes(route.href)) || routes[0];
+
     return (
         <div className="hidden relative md:block min-w-[280px] max-w-[280px] h-screen overflow-hidden w-full bg-primary/5 dark:bg-secondary/30
         dark:text-foreground text-muted-foreground border-r-2 border-separate">
@@ -53,15 +50,16 @@ export const Sidebar = () => {
                 <Logo />
             </div>
             <div className="p-2">ToDO Credits</div>
-            <div className="flex flex-col p-2">
-                {routes.map((route) => (
-                    <Link key={route.href} href={route.href} className={buttonVariants({
+            <div className="flex flex-col p-2 gap-1">
+                {routes.map((route) => {
+                    const href = route.href === "" ? "/" : route.href;
+                    return <Link key={route.href} href={href} className={buttonVariants({
                         variant: activeRoute.href === route.href ? "sidebarActiveItem" : "sidebarItem"
                     })}>
                         <route.icon size={20} />
                         {route.label}
                     </Link>
-                )
+                }
                 )}
             </div>
         </div>
