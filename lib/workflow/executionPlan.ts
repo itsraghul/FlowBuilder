@@ -61,7 +61,7 @@ export const FlowToExecutionPlan = (nodes: AppNode[], edges: Edge[]): FlowToExec
                 const incomers = getIncomers(currenNode, nodes, edges);
                 if (incomers.every(incomer => planned.has(incomer.id))) {
                     //If all are planned and still invalid input then error
-
+                    console.error("Invalid inputs ", currenNode.id, invalidInputs);
                     inputsWithErros.push({
                         nodeId: currenNode.id,
                         inputs: invalidInputs
