@@ -1,4 +1,4 @@
-name : Auto merge main-safe-backup with main
+name : Auto merge main-safe-backup with main branch
 
 on: 
   push:
