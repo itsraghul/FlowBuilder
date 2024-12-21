@@ -1,4 +1,4 @@
-name : Auto merge main-safe-backup with main branch
+name : Auto merge main-backup with main
 
 on: 
   push:
@@ -22,10 +22,10 @@ jobs:
     - name: Fetch All branches
       run: git fetch --all --prune
 
-    - name: Merge main branch into main-safe-backup
+    - name: Merge main branch into main-backup
       run: |
         git checkout main
-        git merge origin/main-safe-backup --allow-unrelated-histories -X theirs --no-edit
+        git merge origin/main-backup --allow-unrelated-histories --no-edit
 
     - name: Push changes
       run: git push origin main
