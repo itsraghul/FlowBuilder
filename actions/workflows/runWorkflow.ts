@@ -2,9 +2,11 @@
 
 import prisma from "@/lib/prisma";
 import { checkIsUserAuthenticated } from "../checkUserAuthenticated";
-import { ExecutionPhaseStatus, WorkflowExecutionPlan, WorkflowExecutionStatus } from "@/types/workflow";
+import { ExecutionPhaseStatus, WorkflowExecutionPlan, WorkflowExecutionStatus, WorkflowExecutionTrigger } from "@/types/workflow";
 import { FlowToExecutionPlan } from "@/lib/workflow/executionPlan";
 import { TaskRegistry } from "@/lib/workflow/task/registry";
+import { redirect } from "next/navigation";
+import { ExecuteWorkflow } from "@/lib/workflow/executeWorkflow";
 
 
 export const RunWorkFlow = async (form: {
@@ -55,7 +57,7 @@ export const RunWorkFlow = async (form: {
             userId,
             status: WorkflowExecutionStatus.PENDING,
             startedAt: new Date(),
-            trigger: "MANUAL",
+            trigger: WorkflowExecutionTrigger.MANUAL,
             phases: {
                 create: executionPlan.flatMap(phase => {
                     return phase.nodes.flatMap((node) => {
@@ -79,5 +81,8 @@ export const RunWorkFlow = async (form: {
     if (!execution) {
         throw new Error("Execution plan not created");
     }
-    console.log("Execution Plan:", execution);
+
+    ExecuteWorkflow(execution.id); //run background execution
+
+    redirect(`/workflow/runs/${workflowId}/${execution.id}`);
 }
