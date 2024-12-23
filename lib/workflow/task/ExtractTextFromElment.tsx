@@ -21,12 +21,12 @@ export const ExtractTextFromElment = {
             helperText: "Enter the selector to extract text",
             required: true
         }
-    ],
+    ] as const,
     outputs: [
         {
             name: "Extracted Text",
             type: TaskParamType.STRING
         }
-    ],
+    ] as const,
     credits: 3
 } satisfies WorkflowTask;

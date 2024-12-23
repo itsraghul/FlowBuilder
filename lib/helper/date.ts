@@ -6,7 +6,7 @@ export const DateToDurationString = (end: Date | null | undefined, start: Date |
 
     const timeElapsed = end.getTime() - start.getTime();
 
-    if (timeElapsed < 1) return `${timeElapsed} ms`;
+    if (timeElapsed < 1000) return `${timeElapsed} ms`;
 
     const duration = intervalToDuration({
         start: 0,
