@@ -14,10 +14,11 @@ import { FileCode2, MoreVerticalIcon, PlayIcon, ShuffleIcon, TrashIcon } from 'l
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { toast } from 'sonner'
+import RunButton from './RunButton'
 
 const statusColors = {
     [WorkflowStatus.DRAFT]: "bg-amber-300 text-yellow-600",
-    [WorkflowStatus.PUBLISHED_LOCAL]: "bg-primary"
+    [WorkflowStatus.PUBLISHED_LOCAL]: "bg-primary text-white"
 }
 
 
@@ -51,6 +52,7 @@ const WorkflowCard = ({ workflow }: { workflow: Workflow }) => {
                     </div>
                 </div>
                 <div className="flex items-center space-x-2">
+                    {!isDraft && <RunButton workflowId={workflow.id} />}
                     <Link href={`/workflow/editor/${workflow.id}`} className={cn(buttonVariants({
                         variant: "outline",
                         size: "sm"

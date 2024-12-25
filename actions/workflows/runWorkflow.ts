@@ -2,7 +2,7 @@
 
 import prisma from "@/lib/prisma";
 import { checkIsUserAuthenticated } from "../checkUserAuthenticated";
-import { ExecutionPhaseStatus, WorkflowExecutionPlan, WorkflowExecutionStatus, WorkflowExecutionTrigger } from "@/types/workflow";
+import { ExecutionPhaseStatus, WorkflowExecutionPlan, WorkflowExecutionStatus, WorkflowExecutionTrigger, WorkflowStatus } from "@/types/workflow";
 import { FlowToExecutionPlan } from "@/lib/workflow/executionPlan";
 import { TaskRegistry } from "@/lib/workflow/task/registry";
 import { redirect } from "next/navigation";
@@ -34,23 +34,33 @@ export const RunWorkFlow = async (form: {
     }
 
     let executionPlan: WorkflowExecutionPlan;
-    if (!flowDefinition) {
-        throw new Error("FlowDefinition is not defined.");
+    let workflowDefinition = flowDefinition;
+
+    if (workflow.status === WorkflowStatus.PUBLISHED_LOCAL) {
+        if (!workflow.executionPlan) throw new Error("No execution plan is published workflow.")
+
+        executionPlan = JSON.parse(workflow.executionPlan);
+        workflowDefinition = workflow.definition;
+    } else {
+        if (!flowDefinition) {
+            throw new Error("FlowDefinition is not defined.");
+        }
+
+        const flow = JSON.parse(flowDefinition);
+
+        const result = FlowToExecutionPlan(flow.nodes, flow.edges);
+
+        if (result.error) {
+            throw new Error("Flow definition not valid");
+        }
+
+        if (!result.executionPlan) {
+            throw new Error("Execution plan not generated");
+        }
+
+        executionPlan = result.executionPlan;
     }
 
-    const flow = JSON.parse(flowDefinition);
-
-    const result = FlowToExecutionPlan(flow.nodes, flow.edges);
-
-    if (result.error) {
-        throw new Error("Flow definition not valid");
-    }
-
-    if (!result.executionPlan) {
-        throw new Error("Execution plan not generated");
-    }
-
-    executionPlan = result.executionPlan;
     const execution = await prisma.workflowExecution.create({
         data: {
             workflowId,
@@ -58,7 +68,7 @@ export const RunWorkFlow = async (form: {
             status: WorkflowExecutionStatus.PENDING,
             startedAt: new Date(),
             trigger: WorkflowExecutionTrigger.MANUAL,
-            definition: flowDefinition,
+            definition: workflowDefinition,
             phases: {
                 create: executionPlan.flatMap(phase => {
                     return phase.nodes.flatMap((node) => {
