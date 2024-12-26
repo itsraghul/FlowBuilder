@@ -195,6 +195,7 @@ const executePhase = async (phase: ExecutionPhase, node: AppNode, environment: E
     const runFn = ExecutorRegistry[node.data.type];
 
     if (!runFn) {
+        logCollector.error(`Executor not found for ${node.data.type}`);
         return false;
     }
 

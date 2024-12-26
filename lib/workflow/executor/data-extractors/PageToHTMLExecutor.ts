@@ -1,6 +1,6 @@
 
 import { ExecutionEnvironment } from "@/types/executor";
-import { PageToHTML } from "../task/PageToHTML";
+import { PageToHTML } from "../../task/data-extractors/PageToHTML";
 
 
 export const PageToHTMLExecutor = async (environment: ExecutionEnvironment<typeof PageToHTML>): Promise<boolean> => {
