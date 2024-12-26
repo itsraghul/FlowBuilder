@@ -23,7 +23,9 @@ const CreateWorkflowDialog = ({ triggerText }: { triggerText?: string }) => {
 
     const form = useForm<createWorkflowSchemaType>({
         resolver: zodResolver(createWorkFlowSchema),
-        defaultValues: {}
+        defaultValues: {
+            type: WorkflowType.WEBSCRAPPER
+        }
     });
 
     const { mutate, isPending } = useMutation({
@@ -88,7 +90,7 @@ const CreateWorkflowDialog = ({ triggerText }: { triggerText?: string }) => {
                                     <FormItemBox
                                         label={"Type"}
                                         field={{ ...field }}
-                                        description={"Provide the type of workflow to be created."}
+                                        description={"Currently only web/api scrapper is supported. More types will be introduced in the future."}
                                         isRequired={true}
                                         renderInputElement={(field: ControllerRenderProps) => {
                                             return <Select onValueChange={field.onChange} defaultValue={field.value}>
@@ -97,10 +99,10 @@ const CreateWorkflowDialog = ({ triggerText }: { triggerText?: string }) => {
                                                         <SelectValue placeholder="Select the type of workflow" />
                                                     </SelectTrigger>
                                                 </FormControl>
-                                                <SelectContent>
-                                                    <SelectItem value={WorkflowType.WEBSCRAPPER}>Web Scrapper</SelectItem>
-                                                    <SelectItem value={WorkflowType.COMMON_APP_INTEGRATION}>Common App Integration</SelectItem>
-                                                    <SelectItem value={WorkflowType.WEB_AUTOMATION_TESTING}>Web Automation Testing</SelectItem>
+                                                <SelectContent defaultValue={WorkflowType.WEBSCRAPPER}>
+                                                    <SelectItem value={WorkflowType.WEBSCRAPPER}>Data Scrapper (Web/API)</SelectItem>
+                                                    {/* <SelectItem value={WorkflowType.COMMON_APP_INTEGRATION}>Common App Integration</SelectItem>
+                                                    <SelectItem value={WorkflowType.WEB_AUTOMATION_TESTING}>Web Automation Testing</SelectItem> */}
                                                 </SelectContent>
                                             </Select>
                                         }} />

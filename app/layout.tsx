@@ -8,7 +8,7 @@ import { Toaster } from "@/components/ui/sonner";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Flow Builder",
+  title: "Data Forge",
   description: "Generate DataSet for your ML models.",
 };
 
@@ -25,7 +25,7 @@ export default function RootLayout({
     }}>
       <html lang="en">
         <head>
-          <title>Flow Builder</title>
+          <title>Data Forge</title>
         </head>
         <body className={inter.className}>
           <AppProviders>

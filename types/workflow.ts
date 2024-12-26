@@ -33,7 +33,8 @@ export type WorkflowExecutionPlanPhase = {
 export type WorkflowExecutionPlan = WorkflowExecutionPlanPhase[];
 
 export enum WorkflowExecutionTrigger {
-    MANUAL = "MANUAL"
+    MANUAL = "MANUAL",
+    CRON = "CRON"
 }
 
 export enum WorkflowExecutionStatus {
