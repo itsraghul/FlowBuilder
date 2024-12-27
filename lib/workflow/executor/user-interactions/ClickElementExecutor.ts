@@ -1,11 +1,10 @@
 
 import { ExecutionEnvironment } from "@/types/executor";
-import { ClickElement } from "../../task/user-interaction/ClickElement";
-import { waitFor } from "@/lib/helper/waitFor";
+import { ClickElementTask } from "../../task/user-interaction/ClickElement";
 
 
 
-export const ClickElementExecutor = async (environment: ExecutionEnvironment<typeof ClickElement>): Promise<boolean> => {
+export const ClickElementExecutor = async (environment: ExecutionEnvironment<typeof ClickElementTask>): Promise<boolean> => {
     try {
         const selector = environment.getInput("Selector");
         if (!selector) {
@@ -13,7 +12,6 @@ export const ClickElementExecutor = async (environment: ExecutionEnvironment<typ
         }
 
         await environment.getPage()!.click(selector);
-        await waitFor(3000);
         return true;
     } catch (error: any) {
         environment.log.error(error.message);

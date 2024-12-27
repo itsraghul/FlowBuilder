@@ -1,11 +1,11 @@
 import { TaskParamType, TaskType } from "@/types/Tasks/task";
 import { WorkflowTask } from "@/types/workflow";
-import { LucideProps, MousePointerClick } from "lucide-react";
+import { EyeIcon, LucideProps } from "lucide-react";
 
-export const ClickElementTask = {
-    type: TaskType.CLICK_ELEMENT,
-    label: "Click Element",
-    icon: (props: LucideProps) => (<MousePointerClick className="stroke-orange-400" {...props} />),
+export const WaitForElementTask = {
+    type: TaskType.WAIT_FOR_ELEMENT,
+    label: "Wait for Element",
+    icon: (props: LucideProps) => (<EyeIcon className="stroke-amber-400" {...props} />),
     isEntryPoint: false,
     inputs: [
         {
@@ -19,7 +19,17 @@ export const ClickElementTask = {
             type: TaskParamType.STRING,
             helperText: "Enter the selector to click",
             required: true
-        }
+        },
+        {
+            name: "Visibility",
+            type: TaskParamType.SELECT,
+            hideHandle: true,
+            required: true,
+            options: [
+                { label: "Visibile", value: "visible" },
+                { label: "Hidden", value: "hidden" }
+            ]
+        },
     ] as const,
     outputs: [
         {

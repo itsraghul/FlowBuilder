@@ -1,10 +1,10 @@
 
 import { ExecutionEnvironment } from "@/types/executor";
-import { FillInput } from "../../task/user-interaction/FillInput";
+import { FillInputTask } from "../../task/user-interaction/FillInput";
 
 
 
-export const FillInputExecutor = async (environment: ExecutionEnvironment<typeof FillInput>): Promise<boolean> => {
+export const FillInputExecutor = async (environment: ExecutionEnvironment<typeof FillInputTask>): Promise<boolean> => {
     try {
         const html = await environment.getPage()!.content();
         const selector = environment.getInput("Selector");

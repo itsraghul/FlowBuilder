@@ -7,6 +7,7 @@ import StringParam from './param/StringParam';
 import { useReactFlow } from '@xyflow/react';
 import { AppNode } from '@/types/Nodes/appNodes';
 import BrowserInstanceParam from './param/BrowserInstanceParam';
+import SelectParam from './param/SelectParam';
 
 const NodeParamField = ({ param, nodeId, disabled }: { param: TaskParam, nodeId: string, disabled: boolean }) => {
     const { name: paramName } = param;
@@ -30,6 +31,9 @@ const NodeParamField = ({ param, nodeId, disabled }: { param: TaskParam, nodeId:
         }
         case TaskParamType.BROWSER_INSTANCE: {
             return <BrowserInstanceParam param={param} value={""} updateNodeParamValue={updateNodeParamValue} />
+        }
+        case TaskParamType.SELECT: {
+            return <SelectParam param={param} updateNodeParamValue={updateNodeParamValue} value={value} disabled={disabled} />
         }
         default: {
             return <div className='w-full'>

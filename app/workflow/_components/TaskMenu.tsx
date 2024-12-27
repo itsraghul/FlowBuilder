@@ -9,6 +9,7 @@ import React from 'react'
 const EXTRACTOR_TASKS = [
     TaskType.PAGE_TO_HTML,
     TaskType.EXTRACT_TEXT_FROM_ELEMENT,
+    TaskType.EXTRACT_ALL_TEXT_FROM_SIMILAR_SELECTOR
 ];
 
 const USER_INTERACTOR_TASKS = [
@@ -16,11 +17,19 @@ const USER_INTERACTOR_TASKS = [
     TaskType.CLICK_ELEMENT
 ]
 
+const TIMING_TASKS = [
+    TaskType.WAIT_FOR_ELEMENT
+]
+
+const RESULTS_DELIVERY = [
+    TaskType.DELIVER_VIA_WEBHOOK
+]
+
 
 const TaskMenu = () => {
     return (
         <aside className='w-[340px] min-w-[340px] max-w-[340px] border-r-2 border-separate h-full p-2 px-4 overflow-auto'>
-            <Accordion type='multiple' className='w-full' defaultValue={["extraction", "interaction"]}>
+            <Accordion type='multiple' className='w-full' defaultValue={["extraction", "interaction", "timing", "results"]}>
                 <AccordionItem value='interaction'>
                     <AccordionTrigger className='font-bold'>
                         User Interactions
@@ -38,6 +47,26 @@ const TaskMenu = () => {
                     <AccordionContent className='flex flex-col gap-1'>
                         {
                             EXTRACTOR_TASKS.map((task, index) => <TaskMenuBtm key={index} taskType={task} />)
+                        }
+                    </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value='timing'>
+                    <AccordionTrigger className='font-bold'>
+                        Timing Controls
+                    </AccordionTrigger>
+                    <AccordionContent className='flex flex-col gap-1'>
+                        {
+                            TIMING_TASKS.map((task, index) => <TaskMenuBtm key={index} taskType={task} />)
+                        }
+                    </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value='results'>
+                    <AccordionTrigger className='font-bold'>
+                        Result Delivery
+                    </AccordionTrigger>
+                    <AccordionContent className='flex flex-col gap-1'>
+                        {
+                            RESULTS_DELIVERY.map((task, index) => <TaskMenuBtm key={index} taskType={task} />)
                         }
                     </AccordionContent>
                 </AccordionItem>
