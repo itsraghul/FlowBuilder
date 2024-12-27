@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import React from 'react'
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList } from '../ui/breadcrumb';
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from '../ui/breadcrumb';
 import { MobileSidebar } from '../Sidebar/Sidebar';
 
 const BreadCrumbHeader = () => {
@@ -20,6 +20,7 @@ const BreadCrumbHeader = () => {
                                     {path === "" ? "HOME" : path.toLocaleUpperCase()}
                                 </BreadcrumbLink>
                             </BreadcrumbItem>
+                            {index !== paths.length - 1 && <BreadcrumbSeparator />}
                         </React.Fragment>
                     ))}
                 </BreadcrumbList>
