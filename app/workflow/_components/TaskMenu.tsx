@@ -9,7 +9,8 @@ import React from 'react'
 const EXTRACTOR_TASKS = [
     TaskType.PAGE_TO_HTML,
     TaskType.EXTRACT_TEXT_FROM_ELEMENT,
-    TaskType.EXTRACT_ALL_TEXT_FROM_SIMILAR_SELECTOR
+    TaskType.EXTRACT_ALL_TEXT_FROM_SIMILAR_SELECTOR,
+    TaskType.EXTRACT_DATA_WITH_AI
 ];
 
 const USER_INTERACTOR_TASKS = [
@@ -25,11 +26,15 @@ const RESULTS_DELIVERY = [
     TaskType.DELIVER_VIA_WEBHOOK
 ]
 
+const DATA_STORAGE = [
+    TaskType.READ_PROPERTY_FROM_JSON
+]
+
 
 const TaskMenu = () => {
     return (
         <aside className='w-[340px] min-w-[340px] max-w-[340px] border-r-2 border-separate h-full p-2 px-4 overflow-auto'>
-            <Accordion type='multiple' className='w-full' defaultValue={["extraction", "interaction", "timing", "results"]}>
+            <Accordion type='multiple' className='w-full' defaultValue={["extraction", "interaction", "timing", "results", "storage"]}>
                 <AccordionItem value='interaction'>
                     <AccordionTrigger className='font-bold'>
                         User Interactions
@@ -67,6 +72,16 @@ const TaskMenu = () => {
                     <AccordionContent className='flex flex-col gap-1'>
                         {
                             RESULTS_DELIVERY.map((task, index) => <TaskMenuBtm key={index} taskType={task} />)
+                        }
+                    </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value='storage'>
+                    <AccordionTrigger className='font-bold'>
+                        Data Storage
+                    </AccordionTrigger>
+                    <AccordionContent className='flex flex-col gap-1'>
+                        {
+                            DATA_STORAGE.map((task, index) => <TaskMenuBtm key={index} taskType={task} />)
                         }
                     </AccordionContent>
                 </AccordionItem>

@@ -8,6 +8,8 @@ import { ClickElementTask } from "./user-interaction/ClickElement";
 import { WaitForElementTask } from "./timing-controls/WaitForElement";
 import { DeliverViaWebhookTask } from "./storing-data/DeliverViaWebhook";
 import { ExtractAllTextFromSimilarSelectorTask } from "./data-extractors/ExtractAllTextFromSimilarSelector";
+import { ExtractDataWithAITask } from "./data-extractors/ExtractDataWithAITask";
+import { ReadPropertyFromJSONTask } from "./data-storage/ReadPropertyFromJSON";
 
 type Registry = {
     [K in TaskType]: WorkflowTask & { type: K };
@@ -21,7 +23,9 @@ export const TaskRegistry: Registry = {
     [TaskType.CLICK_ELEMENT]: ClickElementTask,
     [TaskType.WAIT_FOR_ELEMENT]: WaitForElementTask,
     [TaskType.DELIVER_VIA_WEBHOOK]: DeliverViaWebhookTask,
-    [TaskType.EXTRACT_ALL_TEXT_FROM_SIMILAR_SELECTOR]: ExtractAllTextFromSimilarSelectorTask
+    [TaskType.EXTRACT_ALL_TEXT_FROM_SIMILAR_SELECTOR]: ExtractAllTextFromSimilarSelectorTask,
+    [TaskType.EXTRACT_DATA_WITH_AI]: ExtractDataWithAITask,
+    [TaskType.READ_PROPERTY_FROM_JSON]: ReadPropertyFromJSONTask
 };
 
 
