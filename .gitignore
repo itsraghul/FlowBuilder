@@ -41,6 +41,5 @@ dev.db
 dev.db-journal
 migration.sql
 migration_lock.toml
-package-lock.json
 
 .idea
