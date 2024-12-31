@@ -23,16 +23,6 @@ const routes = [
         icon: Layers2Icon
     },
     {
-        href: "datasets",
-        label: "DataSets",
-        icon: Database
-    },
-    {
-        href: "intergrations",
-        label: "Intergrations",
-        icon: Webhook
-    },
-    {
         href: "credentials",
         label: "Credentials",
         icon: ShieldCheckIcon
@@ -46,7 +36,17 @@ const routes = [
         href: "marketplace",
         label: "Marketplace",
         icon: Store
-    }
+    },
+    // {
+    //     href: "datasets",
+    //     label: "DataSets",
+    //     icon: Database
+    // },
+    // {
+    //     href: "intergrations",
+    //     label: "Intergrations",
+    //     icon: Webhook
+    // },
 ]
 
 export const Sidebar = () => {
