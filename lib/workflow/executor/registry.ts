@@ -11,6 +11,9 @@ import { DeliverViaWebhookExecutor } from "./storing-data/DeliverViaWebhookExecu
 import { ExtractAllTextFromSimilarSelectorTaskExecutor } from "./data-extractors/ExtractAllTextFromSimilarSelectorTaskExecutor";
 import { ExtractDataWithAIExecutor } from "./data-extractors/ExtractDataWithAIExecutor";
 import { ReadPropertyFromJSONExecutor } from "./data-storage/ReadPropertyFromJSONExecutor";
+import { AddPropertyToJSONExecutor } from "./data-storage/AddPropertyToJSONExecutor";
+import { NavigateToURLExecutor } from "./user-interactions/NavigateToURLExecutor";
+import { ScrollToElementExecutor } from "./user-interactions/ScrollToElementExecutor";
 
 
 
@@ -28,5 +31,8 @@ export const ExecutorRegistry: Registry = {
     [TaskType.DELIVER_VIA_WEBHOOK]: DeliverViaWebhookExecutor,
     [TaskType.EXTRACT_ALL_TEXT_FROM_SIMILAR_SELECTOR]: ExtractAllTextFromSimilarSelectorTaskExecutor,
     [TaskType.EXTRACT_DATA_WITH_AI]: ExtractDataWithAIExecutor,
-    [TaskType.READ_PROPERTY_FROM_JSON]: ReadPropertyFromJSONExecutor
+    [TaskType.READ_PROPERTY_FROM_JSON]: ReadPropertyFromJSONExecutor,
+    [TaskType.ADD_PROPERTY_TO_JSON]: AddPropertyToJSONExecutor,
+    [TaskType.NAVIGATE_URL]: NavigateToURLExecutor,
+    [TaskType.SCROLL_TO_ELEMENT]: ScrollToElementExecutor
 }

@@ -15,7 +15,9 @@ const EXTRACTOR_TASKS = [
 
 const USER_INTERACTOR_TASKS = [
     TaskType.FILL_INPUT,
-    TaskType.CLICK_ELEMENT
+    TaskType.CLICK_ELEMENT,
+    TaskType.NAVIGATE_URL,
+    TaskType.SCROLL_TO_ELEMENT
 ]
 
 const TIMING_TASKS = [
@@ -27,7 +29,8 @@ const RESULTS_DELIVERY = [
 ]
 
 const DATA_STORAGE = [
-    TaskType.READ_PROPERTY_FROM_JSON
+    TaskType.READ_PROPERTY_FROM_JSON,
+    TaskType.ADD_PROPERTY_TO_JSON
 ]
 
 
