@@ -27,11 +27,11 @@ const routes = [
         label: "Credentials",
         icon: ShieldCheckIcon
     },
-    {
-        href: "billing",
-        label: "Billing",
-        icon: CoinsIcon
-    },
+    // {
+    //     href: "billing",
+    //     label: "Billing",
+    //     icon: CoinsIcon
+    // },
     {
         href: "marketplace",
         label: "Marketplace",
