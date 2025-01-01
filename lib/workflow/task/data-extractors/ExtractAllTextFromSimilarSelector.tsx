@@ -4,7 +4,7 @@ import { LetterText, LucideProps } from "lucide-react";
 
 export const ExtractAllTextFromSimilarSelectorTask = {
     type: TaskType.EXTRACT_ALL_TEXT_FROM_SIMILAR_SELECTOR,
-    label: "Extract All Text from similar Selector",
+    label: "Extract Texts as Array",
     icon: (props: LucideProps) => (<LetterText className="stroke-rose-400" {...props} />),
     isEntryPoint: false,
     inputs: [
