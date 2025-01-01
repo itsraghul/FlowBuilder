@@ -6,21 +6,27 @@ import { WorkflowStatus } from "@/types/workflow";
 
 export async function GET(req: Request) {
     const now = new Date();
-    const workflows = await prisma.workflow.findMany({
-        select: { id: true },
-        where: {
-            status: WorkflowStatus.PUBLISHED_LOCAL,
-            cron: { not: null },
-            nextRunAt: { lte: now }
-        }
-    });
+    try {
+        const workflows = await prisma.workflow.findMany({
+            select: { id: true },
+            where: {
+                status: WorkflowStatus.PUBLISHED_LOCAL,
+                cron: { not: null },
+                nextRunAt: { lte: now }
+            }
+        });
 
-    for (const workflow of workflows) {
-        triggerWorkflow(workflow.id);
+        for (const workflow of workflows) {
+            triggerWorkflow(workflow.id);
+        }
+
+
+        return Response.json({ workflowsToRun: workflows.length }, { status: 200 })
+    } catch (err) {
+        console.error("Server error: ", err);
+        return Response.json({ error: "Internal Server Error" }, { status: 500 });
     }
 
-
-    return Response.json({ workflowsToRun: workflows.length }, { status: 200 })
 };
 
 
