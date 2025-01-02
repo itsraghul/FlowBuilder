@@ -11,7 +11,7 @@ export const LaunchBrowserExecutor = async (environment: ExecutionEnvironment<ty
         const webSiteUrl = environment.getInput("Website Url");
         let browser: Browser | BrowserCore;
         if (process.env.NODE_ENV === "production" || process.env.VERCEL_ENV === "production") {
-            const executablePath = await chromium.executablePath('https://github.com/Sparticuz/chromium/releases/download/v131.0.1/chromium-v131.0.1-pack.tar');
+            const executablePath = await chromium.executablePath(process.env.CHROME_CDN_LINK);
             browser = await puppeteerCore.launch({
                 executablePath,
                 // You can pass other configs as required
