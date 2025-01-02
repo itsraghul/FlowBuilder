@@ -9,6 +9,7 @@ import { ExecutorRegistry } from "./executor/registry";
 import { Environment, ExecutionEnvironment } from "@/types/executor";
 import { TaskParamType } from "@/types/Tasks/task";
 import { Browser, Page } from "puppeteer";
+import { type Browser as BrowserCore } from 'puppeteer-core';
 import { Edge } from "@xyflow/react";
 import { LogCollector } from "@/types/log";
 import { createLogCollector } from "../log";
@@ -234,7 +235,7 @@ const createExecutionEnvironment = (node: AppNode, environment: Environment, log
         getInput: (name: string) => environment.phases[node.id]?.inputs[name],
         setOutput: (name: string, value: string) => (environment.phases[node.id].outputs[name] = value),
         getBrowser: () => environment.browser,
-        setBrowser: (browser: Browser) => (environment.browser = browser),
+        setBrowser: (browser: Browser | BrowserCore) => (environment.browser = browser),
         getPage: () => environment.page,
         setPage: (page: Page) => (environment.page = page),
         log: logCollector
