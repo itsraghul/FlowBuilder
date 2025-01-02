@@ -2,17 +2,4 @@ Data Forge
 
 
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+A dataset creator for ML models through Web-scrape workflows. Allows users to create web-scrapping workflows with various configuration to create web-scrapping workflow to collect data for dataset. It has AI integration that allows AI to extract necessary selectors and data from website. Also has facilities to schedule the workflow to appropriate times using cron syntax. Currently can send the data through webhook. In future, In house dataset storage and marketplace for selling datasets will be implemented.
